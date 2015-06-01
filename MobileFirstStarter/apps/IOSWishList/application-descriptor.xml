@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed Materials - Property of IBM
+    5725-I43 (C) Copyright IBM Corp. 2011, 2013. All Rights Reserved.
+    US Government Users Restricted Rights - Use, duplication or
+    disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+-->
+<nativeIOSApp id="IOSWishList" platformVersion="7.1.0.00.20150531-0339" bundleId="com.IOSWishList" 
+	version="1.0" xmlns="http://www.worklight.com/native-ios-descriptor">
+	
+	<displayName>IOSWishList</displayName>
+	<description>IOSWishList</description>
+	<accessTokenExpiration>10</accessTokenExpiration>
+	<userIdentityRealms>cloudant</userIdentityRealms>
+	<pushSender password="worklightdev"/>
+	<tags>
+		<tag>
+            <name>wishlist</name>
+        </tag>
+		<tag>
+            <name>nirvana</name>
+        </tag>
+	</tags>
+	
+	<!-- 
+        Define the target category for generating ADRESSABLE DEVICE license reports 
+        Possible values are 'UNDEFINED', 'B2E', 'B2C'
+     -->
+    <targetCategory>UNDEFINED</targetCategory>	
+</nativeIOSApp>
