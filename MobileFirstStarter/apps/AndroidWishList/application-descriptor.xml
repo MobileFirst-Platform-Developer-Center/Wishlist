@@ -1,17 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<?xml version="1.0" encoding="UTF-8"?><!--
     Licensed Materials - Property of IBM
     5725-I43 (C) Copyright IBM Corp. 2011, 2013. All Rights Reserved.
     US Government Users Restricted Rights - Use, duplication or
     disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
--->
-<nativeAndroidApp id="AndroidWishList" platformVersion="7.1.0.00.20150531-0339"
-	version="1.0" xmlns="http://www.worklight.com/native-android-descriptor">
+--><nativeAndroidApp xmlns="http://www.worklight.com/native-android-descriptor" id="AndroidWishList" platformVersion="7.1.0.00.20150531-0200" version="1.0">
 	
 	<displayName>AndroidWishList</displayName>
 	<description>AndroidWishList</description>
-	<publicSigningKey></publicSigningKey>
-	<packageName></packageName>
+	<publicSigningKey/>
+	<packageName/>
 	<accessTokenExpiration>10</accessTokenExpiration>
 	<userIdentityRealms>cloudant</userIdentityRealms>
 	<pushSender key="AIzaSyAflIqb7C1KbE2d6GQ4WEJ1jrKVeBY6vR4" senderId="460036607339"/>

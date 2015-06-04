@@ -37,7 +37,7 @@ public class PushAdapterResource {
 	/*
 	 * For more info on JAX-RS see https://jsr311.java.net/nonav/releases/1.1/index.html
 	 */
-		
+
 	//Define logger (Standard java.util.Logger)
 	static Logger logger = Logger.getLogger(PushAdapterResource.class.getName());
 
@@ -56,10 +56,10 @@ public class PushAdapterResource {
     	payload.addProperty("name",name);
     	payload.addProperty("store",store);
     	payload.addProperty("price",price);
-    	notification.getMessage().setAlert(payload.getAsString());
+    	notification.getMessage().setAlert(payload.toString());
     	try{
-    		api.getPushAPI().sendMessage(notification, "iOSBlueList");
-    		return "A nirvana task "+payload.getAsString()+" is sent to application TODOSampleIOS";
+    		api.getPushAPI().sendMessage(notification, "IOSWishList");
+    		return "A wishlist item "+payload.getAsString()+" is sent to application IOSWishList";
     	}catch(MFPSendMessageFailedException e){
     		return "There was an error while sending the notification \n\n"+e.getMessage();
     	}
