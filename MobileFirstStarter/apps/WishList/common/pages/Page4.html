@@ -1,0 +1,64 @@
+<!--
+    COPYRIGHT LICENSE: This information contains sample code provided in source code form. You may copy, modify, and distribute
+    these sample programs in any form without payment to IBM¨ for the purposes of developing, using, marketing or distributing
+    application programs conforming to the application programming interface for the operating platform for which the sample code is written.
+    Notwithstanding anything to the contrary, IBM PROVIDES THE SAMPLE SOURCE CODE ON AN "AS IS" BASIS AND IBM DISCLAIMS ALL WARRANTIES,
+    EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, ANY IMPLIED WARRANTIES OR CONDITIONS OF MERCHANTABILITY, SATISFACTORY QUALITY,
+    FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND ANY WARRANTY OR CONDITION OF NON-INFRINGEMENT. IBM SHALL NOT BE LIABLE FOR ANY DIRECT,
+    INDIRECT, INCIDENTAL, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR OPERATION OF THE SAMPLE SOURCE CODE.
+    IBM HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS OR MODIFICATIONS TO THE SAMPLE SOURCE CODE.
+  
+  
+  {title: 'Galaxy s7 edge', store : 'chennai', price :680, image :'/images/gs6edge.png', productId :'00007'}
+  
+ -->
+ 
+<script>
+    $.getScript(path + "js/Page4.js");
+    $("#plusButton").css("display","none");
+    
+   /* $('.bxslider').bxSlider({
+                            minSlides: 1,
+                            maxSlides: 1,
+                            slideWidth: 360,
+                            slideMargin: 10
+                            });
+                            
+    $('.bxslider img').click(function(){
+                             $('.bxslider img').attr("style","border-width:0px;border-color:#ff0000;border-style:solid");
+                             var selectedId = $('.bxslider img').attr("id");
+                             $('.bxslider img#' + selectedId).attr("style","border-width:2px;border-color:#ff0000;border-style:solid");
+                            }); */
+    
+</script>
+
+ <input type="text" id="wlItemName" placeholder="Item name" />
+ <input type="text" id="wlStoreName" placeholder="Store name" />
+ <input type="text" id="wlPrice" placeholder="Price" />
+
+  <!-- <div data-role="page" id="index">
+    <div data-theme="b" data-role="header" data-position="fixed" data-fullscreen="true">
+        <div class="slider">
+            <ul class="bxslider">
+                <li><img id="pic1" draggable="false" src="http://bxslider.com/images/730_200/trees.jpg" /></li>
+                <li><img id="pic2" draggable="false" src="http://bxslider.com/images/730_200/tree_root.jpg" /></li>
+                <li><img id="pic3" draggable="false" src="http://bxslider.com/images/730_200/houses.jpg" /></li>
+                <li><img id="pic4" draggable="false" src="http://bxslider.com/images/730_200/hill_road.jpg" /></li>
+                <li><img id="pic5" draggable="false" src="http://bxslider.com/images/730_200/me_trees.jpg" /></li>
+                <li><img id="pic6" draggable="false" src="http://bxslider.com/images/730_200/hill_trees.jpg" /></li>
+            </ul></div>
+    </div>
+    
+    <div data-role="content">
+        
+    </div>
+  </div> -->
+
+ <input type="button" class="formButton" value="Add Item" onclick="WLAddItem();" />
+ <input type="button" class="formButton" value="Cancel" onclick="currentPage.loadHome();"/>
+<br/>
+
+
+
+<div id="ResponseDiv"></div>
+
