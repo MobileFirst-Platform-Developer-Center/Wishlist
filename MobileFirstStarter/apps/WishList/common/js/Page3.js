@@ -37,6 +37,7 @@ currentPage.loadPage1 = function(){
 			}
 		});
 	});
+	getServerURL();
 };
 
 currentPage.back = function(){

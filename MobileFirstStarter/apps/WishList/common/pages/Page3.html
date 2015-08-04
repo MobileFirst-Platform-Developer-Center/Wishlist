@@ -12,12 +12,15 @@
 <script>
 	$.getScript(path + "js/Page3.js");
 	$("#plusButton").css("display","none");
+	getServerURL();
 </script>
-<div style="width:100%; display: block;text-align: center; vertical-align: middle;line-height: 90px;font-size:1.0em">
-Set Server URL
-</div>
+<br/>
 
-<input style="width:70%;margin-left:13%"  type="text" id="serverURL" placeholder="protocol://host-or-ip:port/context-root" />
+<div style="width:100%;font-size:1.0em;padding-left:10px">
+Set MobileFirst Platform Host name or IP Address with Port. Context-root has to be the MFP Project runtime name.
+</div>
+<br/>
+<input style="width:85%;margin-left:5%"  type="text" id="serverURL" placeholder="http://host-or-ip:port/context-root" />
 <br/><br/>
 <input style="width:70%;margin-left:13%" type="button" id="setServerURL" class="appButton" value="Tap to set the server URL" onclick="setServerURL()"/>
 <br>

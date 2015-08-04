@@ -16,45 +16,14 @@
 <script>
     $.getScript(path + "js/Page4.js");
     $("#plusButton").css("display","none");
-    
-   /* $('.bxslider').bxSlider({
-                            minSlides: 1,
-                            maxSlides: 1,
-                            slideWidth: 360,
-                            slideMargin: 10
-                            });
-                            
-    $('.bxslider img').click(function(){
-                             $('.bxslider img').attr("style","border-width:0px;border-color:#ff0000;border-style:solid");
-                             var selectedId = $('.bxslider img').attr("id");
-                             $('.bxslider img#' + selectedId).attr("style","border-width:2px;border-color:#ff0000;border-style:solid");
-                            }); */
-    
 </script>
 
- <input type="text" id="wlItemName" placeholder="Item name" />
- <input type="text" id="wlStoreName" placeholder="Store name" />
- <input type="text" id="wlPrice" placeholder="Price" />
+ <input style="margin-left:10px;width:85%" type="text" id="wlItemName" placeholder="Item name" />
+ <input style="margin-left:10px;width:85%" type="text" id="wlStoreName" placeholder="Store name" />
+ <input style="margin-left:10px;width:85%" type="text" id="wlPrice" placeholder="Price" />
 
-  <!-- <div data-role="page" id="index">
-    <div data-theme="b" data-role="header" data-position="fixed" data-fullscreen="true">
-        <div class="slider">
-            <ul class="bxslider">
-                <li><img id="pic1" draggable="false" src="http://bxslider.com/images/730_200/trees.jpg" /></li>
-                <li><img id="pic2" draggable="false" src="http://bxslider.com/images/730_200/tree_root.jpg" /></li>
-                <li><img id="pic3" draggable="false" src="http://bxslider.com/images/730_200/houses.jpg" /></li>
-                <li><img id="pic4" draggable="false" src="http://bxslider.com/images/730_200/hill_road.jpg" /></li>
-                <li><img id="pic5" draggable="false" src="http://bxslider.com/images/730_200/me_trees.jpg" /></li>
-                <li><img id="pic6" draggable="false" src="http://bxslider.com/images/730_200/hill_trees.jpg" /></li>
-            </ul></div>
-    </div>
-    
-    <div data-role="content">
-        
-    </div>
-  </div> -->
 
- <input type="button" class="formButton" value="Add Item" onclick="WLAddItem();" />
+ <input style="margin-left:40%" type="button" class="formButton" value="Add Item" onclick="WLAddItem();" />
  <input type="button" class="formButton" value="Cancel" onclick="currentPage.loadHome();"/>
 <br/>
 
