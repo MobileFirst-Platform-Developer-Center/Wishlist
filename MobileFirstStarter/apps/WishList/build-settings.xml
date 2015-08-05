@@ -4,6 +4,10 @@
 			 US Government Users Restricted Rights - Use, duplication or
              disclosure restricted by GSA ADP Schedule Contract with IBM Corp. -->
 <buildSettings xmlns="http://www.ibm.worklight.com/build-settings">
+    <android>
+        <minification includes="**" level="none"/>
+        <concatenation includes="**"/>
+    </android>
     <iphone>
         <minification includes="**" level="none"/>
         <concatenation includes="**"/>
