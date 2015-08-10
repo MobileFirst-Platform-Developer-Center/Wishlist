@@ -1,6 +1,10 @@
 
 /* JavaScript content from js/main.js in folder common */
 
+/* JavaScript content from js/main.js in folder common */
+
+/* JavaScript content from js/main.js in folder common */
+
 var pagesHistory = [];
 var currentPage = {};
 var path = "";
@@ -53,6 +57,20 @@ function doSubscribeFailure() {
 	alert("doSubscribeFailure");
 }
 
+function getServerURLAlertSuccess(serverURL) {
+    if(serverURL == "http://localhost:9080/MobileFirstStarter"){
+        currentPage.loadPage(3);
+        WL.SimpleDialog.show("Change Server URL", "Please set the custom MFP server URL",
+                             [{
+                              text: "Close", handler: function() {}
+                              }]
+                             );
+    }
+}
+function getServerURLAlertFailure() {
+    alert("Custom MFP server settings need to be set");
+}
+
 function wlCommonInit(){
 	
 	// Special case for Windows Phone 8 only.
@@ -63,7 +81,8 @@ function wlCommonInit(){
 	$("#pagePort").load(path + "pages/MainPage.html", function(){
 		$.getScript(path + "js/MainPage.js", function() {
 			if (currentPage.init) {
-				currentPage.init();
+                    currentPage.init();
+                    WL.App.getServerUrl(getServerURLAlertSuccess, getServerURLAlertFailure);
 			}
 		});
 	});
@@ -928,29 +947,40 @@ function getCatalog(){
     var request = new WLResourceRequest('/adapters/CatalogAdapter/getCatalog', WLResourceRequest.GET);
     request.send().then(
                     function(response) {
-                        ParseData("#respbox", response.responseText);
+                        ParseData("#respbox", response.responseText, "catalog");
                     },
                     function(error) {
                         $("#respbox").text(response.responseText);
                     }
-                        
-                );
+    );
+    
 }
 
-function ParseData(uiElement, items){
+function ParseData(uiElement, items, pageType){
     var parsed = JSON.parse(items);
     var i;
     
-    if(parsed.isSuccessful){
-    
-	    for( i = 0; i < parsed.getAllProductsDetailsReturn.length; i++){
-	        if(i == 0){
-	            $(uiElement).html('<div class="container"><div class="row"><div class="left"><img src="https://dl.dropboxusercontent.com/u/97674776' + parsed.getAllProductsDetailsReturn[0].photo +'" alt=""/></div><div class="middle"><div>'+ parsed.getAllProductsDetailsReturn[0].title+'</div><div>'+parsed.getAllProductsDetailsReturn[0].store+'</div><div>$'+parseFloat(parsed.getAllProductsDetailsReturn[0].price).toFixed(2) +'</div></div><div class="right"></div></div></div>');
-	        }else{
-	            $(uiElement).append('<div class="container"><div class="row"><div class="left"><img src="https://dl.dropboxusercontent.com/u/97674776' + parsed.getAllProductsDetailsReturn[i].photo +'" alt=""/></div><div class="middle"><div>'+ parsed.getAllProductsDetailsReturn[i].title+'</div><div>'+parsed.getAllProductsDetailsReturn[i].store+'</div><div>$'+parseFloat(parsed.getAllProductsDetailsReturn[i].price).toFixed(2) +'</div></div><div class="right"></div></div></div>');
-	        }
-	    }
+    if(pageType == "catalog"){
+        if(parsed.isSuccessful){
+            for( i = 0; i < parsed.getAllProductsDetailsReturn.length; i++){
+                if(i == 0){
+                    $(uiElement).html('<div class="container"><div class="row"><div class="left"><img src="https://dl.dropboxusercontent.com/u/97674776' + parsed.getAllProductsDetailsReturn[0].photo +'" alt=""/></div><div class="middle"><div>'+ parsed.getAllProductsDetailsReturn[0].title+'</div><div>'+parsed.getAllProductsDetailsReturn[0].store+'</div><div>$'+parseFloat(parsed.getAllProductsDetailsReturn[0].price).toFixed(2) +'</div></div><div class="right"></div></div></div>');
+                }else{
+                    $(uiElement).append('<div class="container"><div class="row"><div class="left"><img src="https://dl.dropboxusercontent.com/u/97674776' + parsed.getAllProductsDetailsReturn[i].photo +'" alt=""/></div><div class="middle"><div>'+ parsed.getAllProductsDetailsReturn[i].title+'</div><div>'+parsed.getAllProductsDetailsReturn[i].store+'</div><div>$'+parseFloat(parsed.getAllProductsDetailsReturn[i].price).toFixed(2) +'</div></div><div class="right"></div></div></div>');
+                }
+            }
+        }
+        
+    }else{
+            for( i = 0; i < parsed.length; i++){
+                if(i == 0){
+                    $(uiElement).html('<div class="container"><div class="row"><div class="left"><img src="https://dl.dropboxusercontent.com/u/97674776' + parsed[0].image +'" alt=""/></div><div class="middle"><div>'+ parsed[0].title+'</div><div>'+parsed[0].store+'</div><div>$'+parseFloat(parsed[0].price).toFixed(2) +'</div></div><div class="right"></div></div></div>');
+                }else{
+                    $(uiElement).append('<div class="container"><div class="row"><div class="left"><img src="https://dl.dropboxusercontent.com/u/97674776' + parsed[i].image +'" alt=""/></div><div class="middle"><div>'+ parsed[i].title+'</div><div>'+parsed[i].store+'</div><div>$'+parseFloat(parsed[i].price).toFixed(2) +'</div></div><div class="right"></div></div></div>');
+                }
+            }
     }
+
 }
 
 
@@ -958,14 +988,11 @@ function ParseData(uiElement, items){
 function getServerURL() {
 	WL.App.getServerUrl(getServerURLSuccess, getServerURLFailure);
 }
-
+		
 function getServerURLSuccess(serverURL) {
-	
-    if(serverURL == ""){
-        $("#serverURL").attr("placeholder","http://host-or-ip:port/context-root");
-    }else{
-        $("#serverURL").attr("value",JSON.stringify(serverURL));
-    }
+    
+    $("#serverURL").attr("placeholder","http://host-or-ip:port/context-root");
+    $("#serverURL").attr("value",serverURL);
 }
 function getServerURLFailure() {
 	$("#serverURL").attr("placeholder","http://host-or-ip:port/context-root");
@@ -1025,7 +1052,7 @@ function getAllWLItems(){
 
 			req.send().then(function(resp){
 				$('#JsonDiv').css("display","none");
-					ParseData("#ResponseDiv",resp.responseText);
+					ParseData("#ResponseDiv",resp.responseText, "wishlist");
 					addAllWLItemsToJSONStore(resp.responseText);
 		        }, function(respFailure){
 		        	getAllWLItemsFromJSONStore();
@@ -1093,6 +1120,7 @@ function addAllWLItemsToJSONStore(items){
 }
 
 function getAllWLItemsFromJSONStore(){
+
 	WL.JSONStore.get(WISH_LIST_COLLECTION_NAME).findAll().then(function(docs){
 		var len = docs.length;
 		var items = [];
@@ -1102,8 +1130,9 @@ function getAllWLItemsFromJSONStore(){
 		  var data = doc.json;
 		  items.push(data);
 		}
+                                                             
 		if(items.length > 0) {
-			ParseData("#ResponseDiv", JSON.stringify(items));
+			ParseData("#ResponseDiv", JSON.stringify(items), "wishlist");
 		}
 	});		
 }
@@ -1113,8 +1142,8 @@ function WLAddItem(){
 	var myItemObject = new Object();
     myItemObject.title=$('#wlItemName').val();
     myItemObject.store=$('#wlStoreName').val();
-    myItemObject.price=$('#wlPrice').val();
-    myItemObject.image='https://dl.dropboxusercontent.com/u/97674776/images/iPadAir2.jpg';
+    myItemObject.price=parseInt($('#wlPrice').val());
+    myItemObject.image='/images/iPadAir2.jpg';
     myItemObject.productId=Math.floor(Math.random()*1E4);
     
     var myString = JSON.stringify(myItemObject);
@@ -1139,6 +1168,18 @@ function WLAddItemToJSONStore(myItemObject, markDirty){
 	});		
 }
 
+/* JavaScript content from js/main.js in folder iphone */
+// This method is invoked after loading the main HTML and successful initialization of the IBM MobileFirst Platform runtime.
+function wlEnvInit(){
+    wlCommonInit();
+    // Environment initialization code goes here
+}
+/* JavaScript content from js/main.js in folder iphone */
+// This method is invoked after loading the main HTML and successful initialization of the IBM MobileFirst Platform runtime.
+function wlEnvInit(){
+    wlCommonInit();
+    // Environment initialization code goes here
+}
 /* JavaScript content from js/main.js in folder iphone */
 // This method is invoked after loading the main HTML and successful initialization of the IBM MobileFirst Platform runtime.
 function wlEnvInit(){

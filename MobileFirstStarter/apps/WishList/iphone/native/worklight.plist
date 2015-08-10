@@ -5,9 +5,9 @@
 	<key>protocol</key>
 	<string>http</string>
 	<key>host</key>
-	<string></string>
+	<string>localhost</string>
 	<key>port</key>
-	<string></string>
+	<string>9080</string>
 	<key>wlServerContext</key>
 	<string>/MobileFirstStarter/</string>
 	<key>application id</key>

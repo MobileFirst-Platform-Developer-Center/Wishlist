@@ -13,16 +13,16 @@
 	$.getScript(path + "js/MainPage.js");
     $("#plusButton").css("display","none");
 </script>
-<div style="width:100%; display: block;text-align: center; vertical-align: middle;line-height: 90px;font-size:2em">Choose one</div>
-<div style="width:100%; display: block;text-align: center; vertical-align: middle;line-height: 200px;">
-    <div id="catwrap">
-        <div id="left_col">
-           <a href="#" id="LoadPage1Button" onclick="currentPage.loadPage(1);" style="font-size:1.3em; text-decoration:none;color:gray" > Catalog </a>
-        </div>
-        <div id="right_col">
-            <a href="#" id="LoadPage2Button" onclick="currentPage.loadPage(2);" style="font-size:1.3em; text-decoration:none;color:gray" > Wishlist </a>
-        </div>
-    </div>
-</div>
+<table border="0" style="width:100%;color:#ffffff;border:none">
+<tr>
+<td align="center" style="color:#ffffff;border:none;padding-top:24%;padding-bottom:22%">
+    <a href="#" id="LoadPage1Button" onclick="currentPage.loadPage(1);" style="font-size:1.3em; text-decoration:none;color:gray" > <img src="images/catalog_icon.png" /> <div>Catalog</div> </a>
+</td></tr>
+<tr>
+<td style="background-color:#EAEAEA;color:#ffffff;border:none;padding-top:24%;padding-bottom:24%" align="center">
+    <a href="#" id="LoadPage2Button" onclick="currentPage.loadPage(2);" style="font-size:1.3em; text-decoration:none;color:gray" > <img src="images/wishlist_icon.png" /> <div>Wishlist </div>
+    </a>
+</td></tr>
+</table>
 
 
