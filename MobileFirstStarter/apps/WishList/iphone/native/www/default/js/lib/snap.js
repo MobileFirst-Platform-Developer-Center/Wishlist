@@ -1,9 +1,6 @@
 
 /* JavaScript content from js/lib/snap.js in folder common */
 
-/* JavaScript content from js/lib/snap.js in folder common */
-
-/* JavaScript content from js/lib/snap.js in folder common */
 /*
  * Snap.js
  *
