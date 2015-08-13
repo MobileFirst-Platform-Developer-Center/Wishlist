@@ -1,9 +1,6 @@
 
 /* JavaScript content from js/lib/snap.js in folder common */
 
-/* JavaScript content from js/lib/snap.js in folder common */
-
-/* JavaScript content from js/lib/snap.js in folder common */
 /*
  * Snap.js
  *
@@ -22,7 +19,7 @@
         var settings = {
             element: null,
             dragger: null,
-            disable: 'none',
+            disable: 'right',
             addBodyClasses: true,
             hyperextensible: true,
             resistance: 0.5,
