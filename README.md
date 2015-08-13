@@ -17,7 +17,9 @@ Note: Cloudant DB creation and access to data-proxy is not supported with Hybrid
 Follow the instructions in the tutorial(s) listed below.
 
 > Import the sample to the IBM MobileFirst Plaform Studio on eclipse. 
+>
 > Build the Android/iPhone environments
+>
 > Run it on simulator or device with appropriate code signing identities
 
 ### Tutorials
