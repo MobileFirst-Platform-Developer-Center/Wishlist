@@ -1,8 +1,17 @@
-/*
- *    Licensed Materials - Property of IBM
- *    5725-I43 (C) Copyright IBM Corp. 2015. All Rights Reserved.
- *    US Government Users Restricted Rights - Use, duplication or
- *    disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+/**
+* Copyright 2015 IBM Corp.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
 */
 
 package com.ibm;
@@ -48,8 +57,8 @@ public class LocalStoreAdapterResource {
     private void init() throws MissingConfigurationOptionException{
     	parser = new JsonParser();
     	props = new Properties();
-	 	InputStream itemData = 
-	 		this.getClass().getClassLoader().getResourceAsStream("data.properties"); 
+	 	InputStream itemData =
+	 		this.getClass().getClassLoader().getResourceAsStream("data.properties");
 	 	try {
 			props.load(itemData);
 		} catch (IOException e) {
@@ -74,13 +83,13 @@ public class LocalStoreAdapterResource {
 	@PUT
 	@OAuthSecurity(enabled=false)
 	@Path("/addItem")
-	public void addItem(String itemJson) 
+	public void addItem(String itemJson)
 			throws MissingConfigurationOptionException, URISyntaxException, IOException{
 		try{
 			init();
 			int newKey = props.keySet().size()+1;
 			props.put(String.valueOf(newKey), itemJson);
-			URL url = this.getClass().getClassLoader().getResource("data.properties"); 
+			URL url = this.getClass().getClassLoader().getResource("data.properties");
 			File file = new File(url.toURI().getPath());
 			FileOutputStream foStream = new FileOutputStream(file);
 			props.store(foStream, "saving new item");
@@ -95,7 +104,7 @@ public class LocalStoreAdapterResource {
 	@POST
 	@OAuthSecurity(enabled=false)
 	@Path("/addAllItems")
-	public String addAllItems(String itemsJson) 
+	public String addAllItems(String itemsJson)
 			throws MissingConfigurationOptionException, URISyntaxException, IOException{
 		try{
 			init();
@@ -104,7 +113,7 @@ public class LocalStoreAdapterResource {
 			for(int i=0;i<jsonArr.size();i++){
 				props.put(String.valueOf(i+1), jsonArr.get(i).toString());
 			}
-			URL url = this.getClass().getClassLoader().getResource("data.properties"); 
+			URL url = this.getClass().getClassLoader().getResource("data.properties");
 			File file = new File(url.toURI().getPath());
 			FileOutputStream foStream = new FileOutputStream(file);
 			props.store(foStream, "saving new item");
@@ -119,12 +128,12 @@ public class LocalStoreAdapterResource {
 	@DELETE
 	@OAuthSecurity(enabled=false)
 	@Path("/clearAll")
-	public String clearAllData() 
+	public String clearAllData()
 			throws MissingConfigurationOptionException, URISyntaxException, IOException{
 			init();
 			props.clear();
 			System.out.println("Size : "+props.size());
-			URL url = this.getClass().getClassLoader().getResource("data.properties"); 
+			URL url = this.getClass().getClassLoader().getResource("data.properties");
 			File file = new File(url.toURI().getPath());
 			FileOutputStream foStream = new FileOutputStream(file);
 			props.store(foStream, "clearing all data");

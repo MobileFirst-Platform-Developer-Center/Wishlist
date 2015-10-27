@@ -1,3 +1,19 @@
+/**
+* Copyright 2015 IBM Corp.
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+
 //
 //  MyAppDelegate.m
 //  WishList
@@ -10,19 +26,19 @@
 
 @implementation MyAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	BOOL result = [super application:application didFinishLaunchingWithOptions:launchOptions];
-    
-    // A root view controller must be created in application:didFinishLaunchingWithOptions:  
+
+    // A root view controller must be created in application:didFinishLaunchingWithOptions:
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    UIViewController* rootViewController = [[UIViewController alloc] init];     
-    
+    UIViewController* rootViewController = [[UIViewController alloc] init];
+
     [self.window setRootViewController:rootViewController];
     [self.window makeKeyAndVisible];
-   
+
     [[WL sharedInstance] showSplashScreen];
-    // By default splash screen will be automatically hidden once Worklight JavaScript framework is complete. 
+    // By default splash screen will be automatically hidden once Worklight JavaScript framework is complete.
 	// To override this behaviour set autoHideSplash property in initOptions.js to false and use WL.App.hideSplashScreen() API.
 
     [[WL sharedInstance] initializeWebFrameworkWithDelegate:self];
@@ -48,14 +64,14 @@
     CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ;
 
     cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
-     
+
     // Adjust the Cordova view controller view frame to match its parent view bounds
     cordovaViewController.view.frame = rootViewController.view.bounds;
 
 	// Display the Cordova view
-    [rootViewController addChildViewController:cordovaViewController];  
+    [rootViewController addChildViewController:cordovaViewController];
     [rootViewController.view addSubview:cordovaViewController.view];
-    [cordovaViewController didMoveToParentViewController:rootViewController];  
+    [cordovaViewController didMoveToParentViewController:rootViewController];
 }
 
 -(void)wlInitDidFailWithResult:(WLWebFrameworkInitResult *)result
@@ -77,7 +93,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
