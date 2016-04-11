@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
 Copyright 2015 IBM Corp.
 
@@ -13,7 +14,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 -->
-<?xml version="1.0" encoding="UTF-8"?>
+
 <nativeIOSApp xmlns="http://www.worklight.com/native-ios-descriptor" bundleId="com.IOSWishList" id="IOSWishList" platformVersion="7.1.0.00.20150531-0200" version="1.0">
 
 	<displayName>IOSWishList</displayName>
